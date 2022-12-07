@@ -1,29 +1,30 @@
 {
-  "name": "num-inv-func",
-  "version": "1.0.1",
-  "description": "Inverse the function, by a numerical way (linear approximation)",
-  "keywords": [
+  "name" : "num-inv-func",
+  "version" : "1.0.2",
+  "description" : "Inverse the function, by a numerical way (linear approximation)",
+  "keywords" : [
     "linear-approximation",
     "inverse-function",
     "numerical-solve-equation"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mirismaili/num-inv-func"
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/mirismaili/num-inv-func"
   },
-  "license": "MIT",
-  "author": "S. Mahdi Mir-Ismaili <s.m.mirismaili@gmail.com>",
-  "type": "module",
-  "main": "src/main.js",
-  "exports": {
-    "./*": "./src/*"
+  "license" : "MIT",
+  "author" : "S. Mahdi Mir-Ismaili <s.m.mirismaili@gmail.com>",
+  "type" : "module",
+  "main" : "src/math.js",
+  "exports" : {
+    "." : "./src/math.js",
+    "./*" : "./src/*"
   },
-  "files": [
+  "files" : [
     "src"
   ],
-  "scripts": {
-    "patch-version": "npm version patch --no-git-tag-version",
-    "increase-minor-version": "npm version minor --no-git-tag-version",
+  "scripts" : {
+    "patch-version" : "npm version patch --no-git-tag-version",
+    "increase-minor-version" : "npm version minor --no-git-tag-version",
     "increase-major-version": "npm version major --no-git-tag-version",
     "tag-this-version": "node -e \"require('child_process').execSync('git tag v' + require('./package.json').version)\""
   },
