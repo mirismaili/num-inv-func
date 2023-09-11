@@ -1,35 +1,39 @@
 {
-  "name" : "num-inv-func",
-  "version" : "1.0.2",
-  "description" : "Inverse the function, by a numerical way (linear approximation)",
-  "keywords" : [
+  "name": "num-inv-func",
+  "version": "1.1.1",
+  "description": "Inverse the function, by a numerical way (linear approximation)",
+  "keywords": [
     "linear-approximation",
     "inverse-function",
     "numerical-solve-equation"
   ],
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/mirismaili/num-inv-func"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mirismaili/num-inv-func"
   },
-  "license" : "MIT",
-  "author" : "S. Mahdi Mir-Ismaili <s.m.mirismaili@gmail.com>",
-  "type" : "module",
-  "main" : "src/math.js",
-  "exports" : {
-    "." : "./src/math.js",
-    "./*" : "./src/*"
+  "license": "MIT",
+  "author": "S. Mahdi Mir-Ismaili <s.m.mirismaili@gmail.com>",
+  "type": "module",
+  "main": "dist/math.js",
+  "exports": {
+    ".": "./dist/math.js",
+    "./*": "./dist/*"
   },
-  "files" : [
-    "src"
+  "files": [
+    "dist"
   ],
-  "scripts" : {
-    "patch-version" : "npm version patch --no-git-tag-version",
-    "increase-minor-version" : "npm version minor --no-git-tag-version",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "patch-version": "npm version patch --no-git-tag-version",
+    "increase-minor-version": "npm version minor --no-git-tag-version",
     "increase-major-version": "npm version major --no-git-tag-version",
     "tag-this-version": "node -e \"require('child_process').execSync('git tag v' + require('./package.json').version)\""
   },
-  "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/node": "^20.6.0",
+    "typescript": "^5.2.2"
+  },
   "engines": {
     "node": ">=16"
   }

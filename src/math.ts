@@ -3,13 +3,27 @@
  * @author {@link https://mirismaili.github.io S. Mahdi Mir-Ismaili}
  */
 
-export default function NumericalInvFunction (
-  theFunction, [lowerBoundary, upperBoundary], precision = 1, xToFuncInputs = undefined,
+function NumericalInvFunction (
+  theFunction: (x: number) => number,
+  [lowerBoundary, upperBoundary]: [number, number],
+  precision?: number,
+): (y: number) => number
+function NumericalInvFunction<Inputs extends unknown[] | undefined = undefined> (
+  theFunction: (...inputs: Inputs extends undefined ? [number] : Inputs) => number,
+  [lowerBoundary, upperBoundary]: [number, number],
+  precision: number,
+  xToFuncInputs: (x: number) => Inputs,
+): (y: number) => number
+function NumericalInvFunction<Inputs extends unknown[] | undefined = undefined> (
+  theFunction: (...inputs: Inputs extends undefined ? [number] : Inputs) => number,
+  [lowerBoundary, upperBoundary]: [number, number],
+  precision = 1,
+  xToFuncInputs?: Inputs extends undefined ? undefined : (x: number) => Inputs,
 ) {
-  const f = xToFuncInputs ? (x) => theFunction(xToFuncInputs(x)) : theFunction
+  const f = xToFuncInputs ? (x: number) => theFunction(...(xToFuncInputs(x) as Inputs extends undefined ? [number] : Inputs)) : theFunction
   return numericalInvFunction
   
-  function numericalInvFunction (expectedValue) {
+  function numericalInvFunction (expectedValue: number) {
     const y = expectedValue
     let x0 = lowerBoundary
     let x1 = upperBoundary
@@ -56,5 +70,8 @@ export default function NumericalInvFunction (
     }
   }
 }
+
+// noinspection JSUnusedGlobalSymbols
+export default NumericalInvFunction
 
 const {abs} = Math
